@@ -1,0 +1,22 @@
+<div class="card-body">
+  <!-- Post Content -->
+  <h5 class="card-title"><%= post.user.name %></h5>
+  <p class="card-text"><%= post.content %></p>
+  <!-- Comments Section -->
+  <div id="post_<%= post.id%>_comments">
+    <%= render partial: 'comments', locals: { comments: post.comments}%>
+  </div>
+  <div class="comments">
+    <%= form_with url: comments_path, method: :post do |f| %>
+      <div class="row">
+        <div class="column">
+          <%= f.text_area 'comment[comment]' %>
+          <%= f.hidden_field 'comment[post_id]', value: post.id %>
+        </div>
+        <div class="column">
+          <%= f.submit 'Publish' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

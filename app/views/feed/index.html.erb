@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Posts" %>
+<h1>What's is new?</h1>
+<%= form_with url: posts_path, method: :post do |f| %>
+  <%= f.rich_text_area 'post[content]' %>
+  <%= f.submit 'Publish' %>
+<% end %>
+<%= render 'posts', posts: @posts %>

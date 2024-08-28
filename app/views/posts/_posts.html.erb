@@ -1,0 +1,7 @@
+<div id="posts">
+  <% posts.each do |post| %>
+    <div id="post_<%= post.id %>" class="card mb-3" style="width: 100%;">
+      <%= render partial: 'post', locals: { post: post }%>
+    </div>
+  <% end %>
+</div>

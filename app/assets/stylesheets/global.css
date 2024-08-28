@@ -1,0 +1,18 @@
+.container-blog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    flex-direction: column; /* Optional: For stacking elements vertically */
+}
+
+.input-blog {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.comments {
+    width: 100%
+}

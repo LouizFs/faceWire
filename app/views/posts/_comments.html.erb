@@ -1,0 +1,10 @@
+<% comments.each do |comment| %>
+  <div class="comment mb-2">
+    <small>
+      <b><%= comment.user.username %></b>
+      <%= comment.comment %>
+      <!-- Delete Option -->
+      <%= link_to "x", comment_path(comment), data: {turbo_method: :delete}, class: "text-danger ml-2" %>
+    </small>
+  </div>
+<% end %>

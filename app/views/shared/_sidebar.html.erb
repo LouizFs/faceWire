@@ -1,0 +1,24 @@
+<div class="card mb-3 text-center">
+  <!-- User Photo -->
+  <div class="d-flex justify-content-center">
+    <%= image_tag(current_user.profile_photo_url || "default_avatar.png", class: "img-thumbnail rounded-circle", size: "100x100") %>
+  </div>
+  <!-- User Name -->
+  <h5 class="card-title mt-2"><%= current_user.name %></h5>
+  <!-- Profile Link -->
+  <%= link_to "View Profile", root_path, class: "btn btn-primary btn-sm mt-2" %>
+</div>
+<ul class="list-group">
+  <li class="list-group-item">
+    <%= link_to "Home", root_path %>
+  </li>
+  <li class="list-group-item">
+    <%= link_to "Explore", root_path %>
+  </li>
+  <li class="list-group-item">
+    <%= link_to "Notifications", root_path %>
+  </li>
+  <li class="list-group-item">
+    <%= link_to "Messages", root_path %>
+  </li>
+</ul>
