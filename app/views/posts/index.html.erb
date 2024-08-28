@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
 <% content_for :title, "Posts" %>
-<h1>What's is new?</h1>
-<%= form_with url: posts_path, method: :post do |f| %>
-  <%= f.rich_text_area 'post[content]' %>
-  <%= f.submit 'Publish' %>
+<!-- Notification Message -->
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
 <% end %>
+<h1 class="mb-4">What's New?</h1>
+<!-- Post Form -->
+<%= form_with url: posts_path, method: :post, class: "mb-4" do |f| %>
+  <div class="mb-3">
+    <%= f.rich_text_area 'post[content]', class: "form-control", placeholder: "Share something..." %>
+  </div>
+  <%= f.submit 'Publish', class: "btn btn-primary" %>
+<% end %>
+<!-- Posts Section -->
 <div id="posts">
   <%= render partial: 'posts', locals: { posts: @posts } %>
 </div>

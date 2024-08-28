@@ -4,18 +4,16 @@
   <p class="card-text"><%= post.content %></p>
   <!-- Comments Section -->
   <div id="post_<%= post.id%>_comments">
-    <%= render partial: 'comments/comments', locals: { comments: post.comments}%>
+    <%= render partial: 'comments/comments', locals: { comments: post.comments } %>
   </div>
-  <div class="comments">
-    <%= form_with url: comments_path, method: :post do |f| %>
-      <div class="row">
-        <div class="column">
-          <%= f.text_area 'comment[comment]' %>
-          <%= f.hidden_field 'comment[post_id]', value: post.id %>
-        </div>
-        <div class="column">
-          <%= f.submit 'Publish' %>
-        </div>
+  <div class="comments mt-3">
+    <%= form_with url: comments_path, method: :post, class: "d-flex flex-column" do |f| %>
+      <div class="form-group mb-3">
+        <%= f.text_area 'comment[comment]', class: "form-control", placeholder: "Add a comment..." %>
+        <%= f.hidden_field 'comment[post_id]', value: post.id %>
+      </div>
+      <div class="form-group text-end">
+        <%= f.submit 'Publish', class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
