@@ -4,7 +4,7 @@
   <p class="card-text"><%= post.content %></p>
   <!-- Comments Section -->
   <div id="post_<%= post.id%>_comments">
-    <%= render partial: 'comments', locals: { comments: post.comments}%>
+    <%= render partial: 'comments/comments', locals: { comments: post.comments}%>
   </div>
   <div class="comments">
     <%= form_with url: comments_path, method: :post do |f| %>

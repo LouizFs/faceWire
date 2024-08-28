@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(:posts, partial: "posts", locals: { posts: Post.all.order(created_at: :desc) })
+          render turbo_stream: turbo_stream.update(:posts, partial: "posts", locals: { posts: Post.all.order(created_at: :desc) })
         end
       else
         format.html { render "feeds/index", status: :unprocessable_entity }

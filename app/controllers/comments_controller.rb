@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     respond_to do |format|
-      format.turbo_stream do
-        if @comment.save
-          render turbo_stream: turbo_stream.replace("post_#{comment_params[:post_id]}_comments", partial: "posts/comments", locals: { comments: @post.reload.comments })
+      if @comment.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("post_#{comment_params[:post_id]}_comments", partial: "comments/comments", locals: { comments: @post.reload.comments })
         end
       end
     end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         @comment.destroy
-        render turbo_stream: turbo_stream.replace("post_#{@comment.post_id}_comments", partial: "posts/comments", locals: { comments: @post.reload.comments })
+        render turbo_stream: turbo_stream.update("post_#{@comment.post_id}_comments", partial: "comments/comments", locals: { comments: @post.reload.comments })
       end
     end
   end
